@@ -1,0 +1,315 @@
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{weiiszablon}[2015/07/01 package <weiiszablon>]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% %
+%%% % weiiszablon.sty
+%%% %
+%%% % Plik stylu dla pracy dyplomowej 
+%%% % Wydziału Elektrotechniki i Informatyki
+%%% % Politechniki Rzeszowskiej
+%%% %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[T1]{polski} 				% system kodowania fontów
+\usepackage[utf8]{inputenc} 			% kodowanie 
+\usepackage[T1]{fontenc} 				% czcionka Timnes New Roman
+\usepackage{courier} 					% czcionka courier
+\usepackage{mathptmx} 					% pakiet wymagany do czcionki Times New Roman
+\usepackage{graphicx} 					% pakiet graficzny
+\usepackage{enumitem} 					% spis treści i listy
+\usepackage{indentfirst} 				% aktywne pierwsze wcięcie w akapicie (domyślnie nie jest)
+\usepackage{etoolbox} 					% pakiet umożliwiający edycję domyślnych komend
+\usepackage{amsmath} 					% pakiet matematyczny
+\usepackage{color} 						% podstawowe kolory
+\usepackage[a4paper,left=3.5cm,right=2cm,top=2cm,bottom=2.5cm,includefoot=false,includehead=false,footskip=1.16cm
+]{geometry} 	% wymiary strony
+
+\usepackage{bm}							% dla pogrubionych i pochylonych czcionek w środowisku matematycznym
+
+
+% kropki po numeracji rozdziałów w spisie treści
+\usepackage{tocloft} 					
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
+
+% zmiana odległości przed rozdziałami
+\makeatletter 
+\newskip\old@cftbeforesecskip
+\old@cftbeforesecskip\cftbeforesecskip
+\let\old@l@section\l@section
+\def\l@section#1#2{\old@l@section{#1}{#2}\cftbeforesecskip0pt}
+\makeatother
+
+% zmiana domyślnego formatowania tytułów w spisie treści
+%\renewcommand{\cftsecfont}{} 
+%\renewcommand\cftsecpagefont{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\linespread{1.5} 					% interlinia 1.5				
+
+% rozmiar czcionki numeru strony
+\renewcommand*{\thepage}{\footnotesize\arabic{page}}
+
+%%%%%%%% odsuniecie wypunktowania
+\setlist[enumerate,1]{label=\arabic*),leftmargin=1.25cm}
+\setlist[itemize,1]{label=-,labelsep=0.4cm,leftmargin=1.25cm}
+\setlist[itemize,2]{label=-,labelsep=0.4cm,leftmargin=0.6cm}
+
+% do sztucznego zwiekszenia poziomu zaglebienia srodowiska itemize
+% / do przejscia na poziom 2
+\makeatletter
+\newcommand{\advanceitemizelevel}{\advance\@itemdepth\@ne}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength\parindent{1.25cm}		% wcięcie 1.25 cm
+\newlength\mylen
+\setlength\mylen{\parindent}
+
+
+\definecolor{niebieski}{RGB}{0,130,150} %kolor niebieski
+\definecolor{mygray}{gray}{0.6} 		% kolor szary
+
+
+\usepackage[compact]{titlesec} 
+%zmiana czcionki i odstępów w tytułach rozdziałów
+
+\titleformat{\section}
+  {\normalfont\fontsize{16pt}{16pt}\bfseries}
+  {\makebox[\mylen][l]{\thesection.}}
+  {0pt}
+  {}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{14pt}{14pt}\bfseries}
+  {\makebox[\mylen][l]{\thesubsection.}}
+  {0pt}
+  {}
+
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{12pt}{12pt}\bfseries}
+  {\makebox[\mylen][l]{\thesubsubsection.}}
+  {0pt}
+  {}
+
+\titlespacing*{\section}{0pt}{*0}{14pt} %zmiana odstępów po tytułach rozdziałów
+\titlespacing*{\subsection}{0pt}{14pt}{12pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{0pt}
+
+
+
+% komenda dla pustej strony
+\newcommand\blankpage{ 
+	\null
+	\thispagestyle{empty}
+	\newpage}
+
+\renewcommand{\figurename}{Rys.} %zmiana domyślnego podpisu dla rysunku
+
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}} %zmiana domyślnej numeracji
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+
+\AtBeginEnvironment{figure}{}\AtEndEnvironment{figure}{\addvspace{18pt}} % dodatkowe odstępy przed tabelami i rysunkami
+\AtBeginEnvironment{table}{}\AtEndEnvironment{table}{\vspace{18pt}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % 10-cio linijkowy abstract
+\usepackage{lmodern}
+\usepackage{fancybox,environ}
+
+\NewEnviron{fixedSizeBox}
+  {\def\trysize{12pt}\def\tryblskip{12.5pt}%
+   \retry}
+\makeatletter
+\def\retry{%
+  \ifdim\trysize<5.5pt
+    \WARNING\expandafter\@gobble
+  \else
+    \expandafter\@firstofone
+  \fi
+  {\edef\trysize{\the\dimexpr\trysize-0.5pt\relax}%
+   \edef\tryblskip{\the\dimexpr\tryblskip-0.5pt\relax}%
+   \sbox0{\begin{minipage}{.965\textwidth}
+   \setlength{\parindent}{1em}\noindent
+   \begingroup\edef\x{\endgroup
+     \noexpand\fontsize{\trysize}{\tryblskip}\noexpand\selectfont}\x
+   \BODY\end{minipage}}%
+  }%
+  \dimen0=\dimexpr\ht0+\dp0\relax
+  \ifdim\dimen0>.3\textwidth
+    \expandafter\retry
+  \else
+    \expandafter\outputoval
+  \fi}
+\makeatletter
+
+\def\WARNING{\sbox{0}{WARNING}}
+
+\def\outputoval{\mbox{\begin{minipage}[l][.27\textwidth]{1\textwidth}  
+\usebox{0}\end{minipage}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{example}{ 
+\textbf{\textcolor{mygray}{Przykład:}}\hspace{0.85cm}
+\ %\quad
+}{%
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\department[1]{\renewcommand\@department{#1}}
+\newcommand\@department{\@latex@error{No \noexpand\department given}\@ehc}
+
+\newcommand\departmentEN[1]{\renewcommand\@departmentEN{#1}}
+\newcommand\@departmentEN{\@latex@error{No \noexpand\departmentEN given}\@ehc}
+
+\renewcommand\author[1]{\renewcommand\@author{#1}}
+\renewcommand\@author{\@latex@error{No \noexpand\author given}\@ehc}
+
+\newcommand\titleEN[1]{\renewcommand\@titleEN{#1}}
+\newcommand\@titleEN{\@latex@error{No \noexpand\titleEN given}\@ehc}
+
+\newcommand\kindofthesis[1]{\renewcommand\@kindofthesis{#1}}
+\newcommand\@kindofthesis{\@latex@error{No \noexpand\kindofthesis given}\@ehc}
+
+\newcommand\kindofthesisEN[1]{\renewcommand\@kindofthesisEN{#1}}
+\newcommand\@kindofthesisEN{\@latex@error{No \noexpand\kindofthesisEN given}\@ehc}
+
+\newcommand\supervisor[1]{\renewcommand\@supervisor{#1}}
+\newcommand\@supervisor{\@latex@error{No \noexpand\supervisor given}\@ehc}
+
+\newcommand\supervisorEN[1]{\renewcommand\@supervisorEN{#1}}
+\newcommand\@supervisorEN{\@latex@error{No \noexpand\supervisorEN given}\@ehc}
+
+\renewcommand\abstract[1]{\renewcommand\@abstract{#1}}
+\newcommand\@abstract{\@latex@error{No \noexpand\abstract given}\@ehc}
+
+\newcommand\abstractEN[1]{\renewcommand\@abstractEN{#1}}
+\newcommand\@abstractEN{\@latex@error{No \noexpand\abstractEN given}\@ehc}
+
+\newcommand\studentID[1]{\renewcommand\@studentID{#1}}
+\newcommand\@studentID{\@latex@error{No \noexpand\studentID given}\@ehc}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% strona tytułowa pracy
+\renewcommand{\maketitle}{
+\begin{titlepage}
+\begin{center}
+~\\[.5cm]
+\includegraphics[width=12.5cm]{auxiliary/logoweii.jpg}
+\\[3cm]
+{\textbf{\Large \textcolor{niebieski}{\@department}}}
+\\[1.5cm]
+{\textbf{\Large \@author}}
+\\[.5cm]
+{\Large \@title}
+\\[5cm]
+{\textbf{\Large Praca dyplomowa \@kindofthesis}} 
+\end{center}
+~\\
+\begin{flushleft}
+{\Large Opiekun pracy:}
+
+{\Large \@supervisor}
+\end{flushleft}
+~\\[0.5cm]
+\begin{center}
+{\Large Rzeszów, \the\year}
+\end{center}
+\end{titlepage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% strona koncowa pracy
+
+\newcommand{\makesummary}{
+\linespread{1}
+\begin{table}[h]
+{
+\begin{tabular}{|p{15cm}|}
+\hline
+\begin{minipage}[t]{9.9cm}
+\flushleft
+POLITECHNIKA RZESZOWSKA im. I. Łukasiewicza
+
+Wydział Elektrotechniki i Informatyki
+		
+\@department
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4.9cm}
+\flushright
+Rzeszów, \the\year
+\end{minipage}
+\\
+\begin{center}
+\textbf{STRESZCZENIE PRACY DYPLOMOWEJ 
+\MakeUppercase{\@kindofthesis}}
+\end{center}
+\begin{center}
+\textbf{\MakeUppercase{\@title}}
+\end{center}
+
+Autor: \@author, nr albumu: \@studentID
+	
+Opiekun: \@supervisor
+	
+Słowa kluczowe: (max. 5 słów kluczowych w 2 wierszach, oddzielanych przecinkami)
+\\
+\\
+\begin{fixedSizeBox}
+\@abstract
+\end{fixedSizeBox}
+\\
+\hline
+\begin{minipage}[t]{9.9cm}
+\flushleft
+RZESZOW UNIVERSITY OF TECHNOLOGY
+		
+Faculty of Electrical and Computer Engineering
+		
+\@departmentEN
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4.9cm}
+\flushright
+Rzeszow, \the\year
+\end{minipage}
+\\
+\begin{center}
+\textbf{\MakeUppercase{\@kindofthesisEN} THESIS ABSTRACT}
+\end{center}
+\begin{center}
+\textbf{\MakeUppercase{\@titleEN}}
+\end{center}
+
+Author: \@author, nr albumu: \@studentID
+	
+Supervisor: \@supervisorEN
+
+Key words: (max. 5 słów kluczowych w 2 wierszach, oddzielanych przecinkami)
+\\
+\\
+\begin{fixedSizeBox}
+\@abstractEN
+\end{fixedSizeBox}
+\\
+\hline
+\end{tabular}
+}
+\end{table}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\endinput
