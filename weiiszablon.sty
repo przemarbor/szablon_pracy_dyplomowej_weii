@@ -114,8 +114,46 @@
 \AtBeginEnvironment{figure}{}\AtEndEnvironment{figure}{\addvspace{18pt}} % dodatkowe odstępy przed tabelami i rysunkami
 \AtBeginEnvironment{table}{}\AtEndEnvironment{table}{\vspace{18pt}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% wybor rodzaju pracy
+
+% NormalTeXSyntaxON
+\def\setcase#1 {\expandafter\def\csname rodzajTitleNo:#1\endcsname}
+\def\rodzajPracyPLTitle#1{\expandafter\ifx\csname rodzajTitleNo:#1\endcsname\relax \PLdefault 
+                \else \csname rodzajTitleNo:#1\endcsname\fi}
+
+%% numery zestawow zadan dla poszczegolnych grup
+\def\PLdefault {wpisz-rodzaj-pracyPL}    
+\setcase 1 {inżynierska}
+\setcase 2 {magisterska}
+\setcase 3 {doktorska}
+% NormalTeXSyntaxOff 
 
 
+% NormalTeXSyntaxON
+\def\setcase#1 {\expandafter\def\csname rodzajEndNo:#1\endcsname}
+\def\rodzajPracyPLEnd#1{\expandafter\ifx\csname rodzajEndNo:#1\endcsname\relax \PLdefault 
+                \else \csname rodzajEndNo:#1\endcsname\fi}
+
+%% numery zestawow zadan dla poszczegolnych grup
+\def\PLdefault {wpisz-rodzaj-pracy}    
+\setcase 1 {inżynierskiej}
+\setcase 2 {magisterskiej}
+\setcase 3 {doktorskiej}
+% NormalTeXSyntaxOff 
+
+
+% NormalTeXSyntaxON
+\def\setcase#1 {\expandafter\def\csname kindOfNo:#1\endcsname}
+\def\rodzajPracyEN#1{\expandafter\ifx\csname kindOfNo:#1\endcsname\relax \ENdefault 
+                \else \csname kindOfNo:#1\endcsname\fi}
+
+%% numery zestawow zadan dla poszczegolnych grup
+\def\ENdefault {wpisz-rodzaj-pracy}    
+\setcase 1 {BSc}
+\setcase 2 {MSc}
+\setcase 3 {PhD}
+% NormalTeXSyntaxOff 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % % 10-cio linijkowy abstract
 \usepackage{lmodern}
@@ -213,7 +251,7 @@
 \\[.5cm]
 {\Large \@title}
 \\[5cm]
-{\textbf{\Large Praca dyplomowa \@kindofthesis}} 
+{\textbf{\Large Praca dyplomowa \rodzajPracyPLTitle{\rodzajPracyNo}}} 
 \end{center}
 ~\\
 \begin{flushleft}
@@ -230,6 +268,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% strona koncowa pracy
+
+\kindofthesis {\rodzajPracyPLEnd{\rodzajPracyNo}}
+\kindofthesisEN{\rodzajPracyEN{\rodzajPracyNo}}
 
 \newcommand{\makesummary}{
 \linespread{1}
