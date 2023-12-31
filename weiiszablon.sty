@@ -1,4 +1,5 @@
-\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{weiiszablon}[2015/07/01 package <weiiszablon>]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{weiiszablon}[2024/01/01 package <weiiszablon>]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% %
 %%% % weiiszablon.sty
@@ -12,22 +13,28 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc} 			% kodowanie 
 \usepackage[T1]{fontenc} 				% czcionka Timnes New Roman
+\usepackage[a4paper,left=3.5cm,right=2cm,top=2cm,bottom=2.5cm,includefoot=false,includehead=false,footskip=1.16cm]{geometry} 	% wymiary strony
 \usepackage{courier} 					% czcionka courier
 \usepackage{mathptmx} 					% pakiet wymagany do czcionki Times New Roman
 \usepackage{graphicx} 					% pakiet graficzny
 \usepackage{enumitem} 					% spis treści i listy
-\usepackage{indentfirst} 				% aktywne pierwsze wcięcie w akapicie (domyślnie nie jest)
 \usepackage{etoolbox} 					% pakiet umożliwiający edycję domyślnych komend
 \usepackage{amsmath} 					% pakiet matematyczny
 \usepackage{color} 						% podstawowe kolory
-\usepackage{listings}                   % styl dla formatowania kodów źródłowych
-\usepackage[a4paper,left=3.5cm,right=2cm,top=2cm,bottom=2.5cm,includefoot=false,includehead=false,footskip=1.16cm]{geometry} 	% wymiary strony
-
+\usepackage[final]{listingsutf8}                   % styl dla formatowania kodów źródłowych
+\usepackage{tikz}
 \usepackage{bm}							% dla pogrubionych i pochylonych czcionek w środowisku matematycznym
 
+\usepackage{caption}
+\usepackage{lmodern}
 
 % kropki po numeracji rozdziałów w spisie treści
-\usepackage{tocloft} 					
+\usepackage{tocloft} 	
+\usepackage{chngcntr}				
+\usepackage[hyphens]{xurl}
+% \def\UrlBreaks{\do\/\do-}
+% \usepackage[unicode=true,naturalnames,psdextra]{hyperref}
+
 \renewcommand{\cftsecaftersnum}{.}
 \renewcommand{\cftsubsecaftersnum}{.}
 \renewcommand{\cftsubsubsecaftersnum}{.}
@@ -50,12 +57,12 @@
 
 \lstset{ 
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
-  basicstyle=\footnotesize\ttfamily\fontsize{11}{0.8em}\selectfont,        % the size of the fonts that are used for the code
+  basicstyle=\linespread{0.85}\footnotesize\ttfamily,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
   breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
+  captionpos=t,                    % sets the caption-position to bottom
   commentstyle=\color{mygreen},    % comment style
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  columns=flexible,
   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
   firstnumber=1,                   % start line enumeration with line 1
   frame=single,	                   % adds a frame around the code
@@ -85,9 +92,11 @@
 
 
 %%%%%%%% odsuniecie wypunktowania
-\setlist[enumerate,1]{label=\arabic*),leftmargin=1.25cm}
-\setlist[itemize,1]{label=-,labelsep=0.4cm,leftmargin=1.25cm}
-\setlist[itemize,2]{label=-,labelsep=0.4cm,leftmargin=0.6cm}
+\setlist[enumerate,1]{label=\arabic*),leftmargin=1.25cm,itemsep=0pt,topsep=0pt}
+\setlist[itemize,1]{label={--},labelsep=0.4cm,leftmargin=1.25cm,itemsep=0pt,topsep=0pt}
+\setlist[itemize,2]{label={--},labelsep=0.4cm,leftmargin=0.6cm,itemsep=0pt,topsep=0pt}
+\setlist{noitemsep}
+\setlist{topsep=0pt}
 
 % do sztucznego zwiekszenia poziomu zaglebienia srodowiska itemize
 % / do przejscia na poziom 2
@@ -139,15 +148,41 @@
 	\thispagestyle{empty}
 	\newpage}
 
-\renewcommand{\figurename}{Rys.} %zmiana domyślnego podpisu dla rysunku
+\addto\captionspolish{\renewcommand{\figurename}{Rys.}} %zmiana domyślnego podpisu dla rysunku
 
 \renewcommand{\thetable}{\arabic{section}.\arabic{table}} %zmiana domyślnej numeracji
 \renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
 \renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
 
-\AtBeginEnvironment{figure}{}\AtEndEnvironment{figure}{\addvspace{18pt}} % dodatkowe odstępy przed tabelami i rysunkami
-\AtBeginEnvironment{table}{}\AtEndEnvironment{table}{\vspace{18pt}}
+\AtBeginEnvironment{figure}{}\AtEndEnvironment{figure}{\addvspace{12pt}} % dodatkowe odstępy przed tabelami i rysunkami
+\AtBeginEnvironment{table}{\small}\AtEndEnvironment{table}{\normalsize\vspace{12pt}}%
+\AtBeginEnvironment{tabular}{\fontsize{10}{9}\selectfont}%
+\AtBeginDocument{\counterwithin{lstlisting}{section}\counterwithin{figure}{section}\counterwithin{table}{section}\counterwithin{equation}{section}}
 
+
+\DeclareCaptionLabelFormat{cfscr}{#1 #2}
+\DeclareCaptionFont{ftscr}{\fontsize{9}{11pt}\selectfont}
+\DeclareCaptionLabelSeparator{labscr}{. }
+\captionsetup[table]{labelformat=cfscr,labelfont=ftscr,labelseparator=labscr,textfont=ftscr,position=top,skip=3pt}
+\captionsetup[figure]{labelformat=cfscr,labelfont=ftscr,labelseparator=labscr,textfont=ftscr,position=bottom,skip=3pt}
+\captionsetup[lstlisting]{labelformat=cfscr,labelfont=ftscr,labelseparator=labscr,textfont=ftscr,position=bottom,skip=3pt}
+
+%na potrzeby pionowego symbolu mikro 
+\usepackage{scalerel}
+\newsavebox{\fooboxMU}
+\newcommand{\slantbox}[2][0]{\colorlet{slantcolor}{.}\mbox{%
+        \sbox{\fooboxMU}{\color{slantcolor}#2}%
+        \hskip\wd\fooboxMU%
+        \pdfsave%
+        \pdfsetmatrix{1 0 #1 1}%
+        \llap{\usebox{\fooboxMU}}%
+        \pdfrestore%
+}}
+\newcommand\unslant[2][-.2]{%
+  \mkern1mu%
+  \ThisStyle{\slantbox[#1]{$\SavedStyle#2$}}%
+  \mkern-1mu%
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % wybor rodzaju pracy
 
@@ -158,9 +193,10 @@
 
 %% numery zestawow zadan dla poszczegolnych grup
 \def\PLdefault {wpisz-rodzaj-pracyPL}    
-\setcase 1 {inżynierska}
-\setcase 2 {magisterska}
-\setcase 3 {doktorska}
+\setcase 1 {PRACA INŻYNIERSKA}
+\setcase 2 {PRACA MAGISTERSKA}
+\setcase 3 {PRACA DOKTORSKA}
+\setcase 4 {PROJEKT INŻYNIERSKI}
 % NormalTeXSyntaxOff 
 
 
@@ -171,9 +207,10 @@
 
 %% numery zestawow zadan dla poszczegolnych grup
 \def\PLdefault {wpisz-rodzaj-pracy}    
-\setcase 1 {inżynierskiej}
-\setcase 2 {magisterskiej}
-\setcase 3 {doktorskiej}
+\setcase 1 {pracy dyplomowej inżynierskiej}
+\setcase 2 {pracy dyplomowej magisterskiej}
+\setcase 3 {pracy dyplomowej doktorskiej}
+\setcase 4 {projektu inżynierskiego}
 % NormalTeXSyntaxOff 
 
 
@@ -184,13 +221,14 @@
 
 %% numery zestawow zadan dla poszczegolnych grup
 \def\ENdefault {wpisz-rodzaj-pracy}    
-\setcase 1 {BSc}
-\setcase 2 {MSc}
-\setcase 3 {PhD}
+\setcase 1 {BSc thesis}
+\setcase 2 {MSc thesis}
+\setcase 3 {PhD thesis}
+\setcase 4 {Engineering project}
+
 % NormalTeXSyntaxOff 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % % 10-cio linijkowy abstract
-\usepackage{lmodern}
 \usepackage{fancybox,environ}
 
 \NewEnviron{fixedSizeBox}
@@ -276,8 +314,9 @@
 \newcommand\keywordsEN[1]{\renewcommand\@keywordsEN{#1}}
 \newcommand\@keywordsEN{\@latex@error{No \noexpand\keywordsEN given}\@ehc}
 
+\usepackage[all]{nowidow}
 
-
+\newcommand{\kod}[1]{\texttt{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% strona tytułowa pracy
 \renewcommand{\maketitle}{
@@ -290,7 +329,7 @@
 \\[.5cm]
 {\Large \@title}
 \\[5cm]
-{\textbf{\Large Praca dyplomowa \rodzajPracyPLTitle{\rodzajPracyNo}}} 
+{\textbf{\Large \rodzajPracyPLTitle{\rodzajPracyNo}}}
 \end{center}
 ~\\
 \begin{flushleft}
@@ -313,7 +352,7 @@
 
 \newcommand{\makesummary}{
 \linespread{1}
-\begin{table}[h]
+\begin{table}[!th]
 {
 \begin{tabular}{|p{15cm}|}
 \hline
@@ -333,7 +372,7 @@ Rzeszów, \the\year
 \end{minipage}
 \\
 \begin{center}
-\textbf{STRESZCZENIE PRACY DYPLOMOWEJ 
+\textbf{STRESZCZENIE 
 \MakeUppercase{\@kindofthesis}}
 \end{center}
 \begin{center}
@@ -368,7 +407,7 @@ Rzeszow, \the\year
 \end{minipage}
 \\
 \begin{center}
-\textbf{\MakeUppercase{\@kindofthesisEN} THESIS ABSTRACT}
+\textbf{\MakeUppercase{\@kindofthesisEN} ABSTRACT}
 \end{center}
 \begin{center}
 \textbf{\MakeUppercase{\@titleEN}}
@@ -392,4 +431,8 @@ Key words: (\@keywordsEN)
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\oldsection\section
+\renewcommand{\section}{\clearpage\oldsection}
+\newcommand{\microS}{$\unslant\mu$}
 \endinput
