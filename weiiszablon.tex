@@ -74,10 +74,10 @@ Ostatni akapit wstępu musi zawierać zwięzłe sformułowanie celu i zakresu pr
 \\
 \textcolor{red}{
 Uwaga: \\
-Jeżeli decydujesz się wykorzystywać \LaTeX'a, ignoruj ogólny dokument dotyczący formatowania pracy dyplomowej na WEiI -- jest przeznaczony dla użytkowników innych edytorów tekstu. Korzystaj z załączonego arkusza stylu, stosuj formatowanie znaczeniowe (nie wymuszaj formatowania), a wynikowa praca będzie zgodna z wymaganiami.
-Zachęcamy do używania \LaTeX'a, czas poświęcony na jego przyswojenie, zwróci się z nawiązką nawet w trakcie tworzenia pracy dyplomowej. \\
+Jeżeli decydujesz się wykorzystywać \LaTeX{}a, ignoruj ogólny dokument dotyczący formatowania pracy dyplomowej na WEiI -- jest przeznaczony dla użytkowników innych edytorów tekstu. Korzystaj z załączonego arkusza stylu, stosuj formatowanie znaczeniowe (nie wymuszaj formatowania), a wynikowa praca będzie zgodna z wymaganiami.
+Zachęcamy do używania \LaTeX{}a, czas poświęcony na jego przyswojenie, zwróci się z~nawiązką nawet w trakcie tworzenia pracy dyplomowej. \\
 Niniejszy tekst, wykorzystujący  styl \texttt{weiiszablon.sty} zawiera informacje o formatowaniu, wielkości czcionek, wyrównania\ldots, ale \textbf{uwaga}, sama treść nie jest istotna (np. opis wielkości czcionek), 
-formatowanie wykona się automatycznie, tu te zapisy są tylko po to, aby dostarczyć dokument zawierający jak najwięcej przykładów użycia \LaTeX'a.
+formatowanie wykona się automatycznie, tu te zapisy są tylko po to, aby dostarczyć dokument zawierający jak najwięcej przykładów użycia \LaTeX{}a.
 }
 
 \section{Tekst zasadniczy -- I}
@@ -92,7 +92,7 @@ Do 20\% objętości pracy. W zależności od charakteru pracy ten rozdział powi
 
 \subsection{Formatowanie rozdziałów i podrozdziałów}
 Rozdziały zaczynają się u góry nowej strony (parzystej lub nieparzystej).
-Podrozdziały i zakresy mogą zaczynać się w dowolnym miejscu strony.
+Podrozdziały i~zakresy mogą zaczynać się w dowolnym miejscu strony.
 Przy końcu pracy zamieszcza się podsumowanie i wnioski. Ostatni akapit podsumowania musi zawierać wyszczególnienie własnej pracy autora i zaczynać się od sformułowania: ,,Autor za własny wkład pracy uważa:''.
 W tym miejscu kończy się numeracja rozdziałów.
 
@@ -106,7 +106,7 @@ Opisując własne dokonania, stosuje się formę bezosobową w czasie przeszłym
 
 Ponad 50\% objętości pracy -- część autorska:
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm] 
-	\item założenia – dane,
+	\item założenia -- dane,
 	\item opis zastosowanej metody rozwiązania lub analizy,
 	\item opis proponowanego rozwiązania, wyniki analizy teoretycznej, obliczenia, projekt konstrukcyjny, procesowy, technologiczny,
 	\item wyniki badań analitycznych, symulacyjnych lub eksperymentalnych itp.
@@ -219,9 +219,9 @@ U_{2}
 
 \subsubsection{Rysunki i tabele}
 \label{Subsec:Rysunki-i-tabele}
-Tekst podstawowy w tabeli pisze się czcionką o rozmiarze 10 punktów, pojedyncza interlinia. Dane liczbowe – wyśrodkowane, dane tekstowe – wyrównane do lewej. Rysunki i tabele zamieszcza się wyśrodkowane na stronie, bez wcięcia pierwszego wiersza.
+Tekst podstawowy w tabeli pisze się czcionką o rozmiarze 10 punktów, pojedyncza interlinia. Dane liczbowe -- wyśrodkowane, dane tekstowe -- wyrównane do lewej. Rysunki i tabele zamieszcza się wyśrodkowane na stronie, bez wcięcia pierwszego wiersza.
 
-W akapicie poprzedzającym rysunek lub tabelę musi znajdować się krótki opis, czego dotyczy dany rysunek/tabela (odniesienie do rysunku/tabeli). Tytuły numeruje się zgodnie z kolejnością w danym rozdziale: numer\_rozdziału.numer\_tabeli/rysunku (np. rys. 2.1, tabela 3.5). W tytule rysunku/tabeli, zaczerpniętych z literatury, podaje się odnośnik do właściwej pozycji. Należy zadbać o to, aby opisy na rysunkach były czytelne (czcionka 8 punktów lub większa). Staraj się nie wymuszać numeracji, pozwól aby robił to za ciebie \LaTeX. Stosuj \verb!\label! do znakowania obiektów, do których być może w tekście się będziesz odwoływał (rozdziały, rysunki, tabele, wzory, listingi \ldots). Odwołuj się do nich w tekście  za pomocą funkcji \verb!\ref{NazwaObiektu}!. Pamiętaj, że \LaTeX\, korzystając z polecenia \verb|latex| nie odczytuje z plików .jpg, .png ich wielkości. Polecenie \verb|latex| generuje plik \verb|DVI|. Jeżeli chcesz go używać zgłosi stosowny błąd. Aby się go pozbyć zdefiniuj wielkość natywną pliku grafiki. Polecamy jednak używanie zamiast polecenia \verb|latex|, polecenie \verb|pdflatex|, wówczas problem nie wystąpi.\\
+W akapicie poprzedzającym rysunek lub tabelę musi znajdować się krótki opis, czego dotyczy dany rysunek/tabela (odniesienie do rysunku/tabeli). Tytuły numeruje się zgodnie z kolejnością w danym rozdziale: numer\_rozdziału.numer\_tabeli/rysunku (np. rys. 2.1, tabela 3.5). W tytule rysunku/tabeli, zaczerpniętych z literatury, podaje się odnośnik do właściwej pozycji. Należy zadbać o to, aby opisy na rysunkach były czytelne (czcionka 8 punktów lub większa). Staraj się nie wymuszać numeracji, pozwól aby robił to za ciebie \LaTeX. Stosuj \verb!\label! do znakowania obiektów, do których być może w tekście się będziesz odwoływał (rozdziały, rysunki, tabele, wzory, listingi \ldots). Odwołuj się do nich w tekście  za pomocą funkcji \verb!\ref{NazwaObiektu}!. Pamiętaj, że \LaTeX{}, korzystając z polecenia \verb|latex| nie odczytuje z plików .jpg, .png ich wielkości. Polecenie \verb|latex| generuje plik \verb|DVI|. Jeżeli chcesz go używać zgłosi stosowny błąd. Aby się go pozbyć zdefiniuj wielkość natywną pliku grafiki. Polecamy jednak używanie zamiast polecenia \verb|latex|, polecenie \verb|pdflatex|, wówczas problem nie wystąpi.\\
 
 \begin{example}
 [\ldots] co umożliwia wyznaczenie wartości napięcia. Na rys. \ref{Fig:schemat} przedstawiono schemat obwodu z równolegle dołączoną pojemnością $C_p$.
@@ -266,13 +266,13 @@ W akapicie poprzedzającym rysunek lub tabelę musi znajdować się krótki opis
 
 \subsubsection{Wzory matematyczne}
 
-Zmienne we wzorach pisze się czcionką pochyłą (styl edytora równań ,,Matematyka') natomiast symbole, niebędące zmiennymi, czcionką prostą (styl ,,Tekst'').
+Zmienne we wzorach pisze się czcionką pochyłą (styl edytora równań ,,Matematyka'') natomiast symbole, niebędące zmiennymi, czcionką prostą (styl ,,Tekst'').
 Rozmiary czcionek: normalny 12 punktów, indeks dolny/górny 9 pkt, indeks podrzędny 7 pkt, symbol 24 pkt, podsymbol 12 pkt Separatorem dziesiętnym w liczbach jest
-przecinek, a nie kropka (dotyczy to również liczb pisanych w tekście akapitu). Poddaj się w tym zakresie \LaTeX{}owi - pisz wzór, a poprawnie się utworzy.
+przecinek, a nie kropka (dotyczy to również liczb pisanych w tekście akapitu). Poddaj się w tym zakresie \LaTeX{}owi -- pisz wzór, a poprawnie się utworzy.
 
 
 Pod wzorem należy zamieścić objaśnienia użytych symboli (chyba, że znajdują się w wykazie na początku pracy). Wzory umieszcza się wyśrodkowane i numeruje zgodnie
-z kolejnością w danym rozdziale: (numer\_rozdziału.numer\_wzoru). Numery wzorów wyrównuje się do prawego marginesu. W akapicie poprzedzającym wzór musi znajdować się krótki opis, czego dotyczy dany wzór i – jeżeli potrzeba – odwołanie do literatury.
+z kolejnością w danym rozdziale: (numer\_rozdziału.numer\_wzoru). Numery wzorów wyrównuje się do prawego marginesu. W akapicie poprzedzającym wzór musi znajdować się krótki opis, czego dotyczy dany wzór i -- jeżeli potrzeba -- odwołanie do literatury.
 
 \begin{example}
 [\ldots] wyznacza się, na podstawie wyrażenia (\ref{Eq:rownanie}). W nawiasach podano rozmiary czcionek używanych we wzorach
@@ -287,9 +287,9 @@ gdzie: $m_s$ -- masa próbki, $N$ -- natężenie oświetlenia, $k_p$ -- wykładn
 
 \subsubsection{Listingi programów}
 
-W pracy dyplomowej możesz umieszczać fragmenty programów. Pamiętaj, aby umieszczać krótkie, tylko najważniejsze fragmenty kodów źródłowych. Zawsze je komentuj w treści
-pracy dyplomowej. Typowo w \LaTeX\ kody źródłowe umieszczane są w środowisku verbatim (\verb|\begin{verbatim}...\end{verbatim}|). Obecnie instnieje jednak bardziej nowoczesne i bardziej funkcjonalne środowisko \verb|lstlisting| (wymaga zainstalowanego w systemie pakietu \verb|listings|). Zwróć uwagę, że możesz kolorować składnię
-automatycznie za pomocą parametru \verb|language|. W niniejszym dokumencie przedstawiono dwa przykłady listingów, Listing \ref{KodMatlab1} to przykład kodu źródłowego Matlaba, a poniżej Listing \ref{KodPerl1} dla Perl'a.\\
+W pracy dyplomowej możesz umieszczać fragmenty programów. Pamiętaj, aby umieszczać krótkie, tylko najważniejsze fragmenty kodów źródłowych. Zawsze je komentuj w~treści
+pracy dyplomowej. Typowo w \LaTeX{} kody źródłowe umieszczane są w środowisku verbatim (\verb|\begin{verbatim}...\end{verbatim}|). Obecnie instnieje jednak bardziej nowoczesne i bardziej funkcjonalne środowisko \verb|lstlisting| (wymaga zainstalowanego w systemie pakietu \verb|listings|). Zwróć uwagę, że możesz kolorować składnię
+automatycznie za pomocą parametru \verb|language|. W niniejszym dokumencie przedstawiono trzy przykłady listingów -- listing \ref{KodMatlab1} to przykład kodu źródłowego Matlaba, poniżej listing \ref{KodPerl1} dla Perla i dołączony z~zewnętrznego pliku listing języka C (\ref{lst:plchr}).\\
 %\komentarz{
 
 \begin{lstlisting}[language=Matlab,caption=Listing programu Matlab,label={KodMatlab1}]
@@ -315,9 +315,20 @@ end
 \end{lstlisting}
 
 Z pewnością przeglądając źródło tego dokumentu zobaczysz, że kody źródłowe powinny mieć zdefiniowane parametry \verb|label|, aby łatwo w tekście do nich się odwoływać.
-Numeracja linii jest w stylu domyślnie włączona (to przydatne, bo w treści pracy łatwo odwołać się dzięki temu do konkretnego wiersza w kodzie źródłowym), możesz je wyłączyć podając jako parametr \verb|numbers=none|. Więcej szczegółów możesz odnaleźć w sekcji \verb|\lstset| pliku arkusza styli. 
+Numeracja linii jest w stylu domyślnie włączona (to przydatne, bo w treści pracy łatwo odwołać się dzięki temu do konkretnego wiersza w kodzie źródłowym), możesz je wyłączyć podając jako parametr \verb|numbers=none|. Więcej szczegółów możesz odnaleźć w sekcji \verb|\lstset| pliku arkusza stylów. 
 %}
 
+Można również dołączać listingi z~zewnętrznych plików\footnote{i nadać im taki sam (albo inny) wygląd jak ze środowiska \texttt{lstlisting}.}, \textbf{zwłaszcza jeżeli zawierają polskie znaki diakrytyczne}. Można w~tym celu wykorzystać polecenie \verb|lstinputlisting|, które przekoduje znaki na te z~dostępnej czcionki:
+\begin{verbatim}
+\lstinputlisting[language={[ANSI]C},inputencoding=utf8/cp1250,
+firstline=2,lastline=6,breaklines=true,numbers=left,frame=hnone,
+caption={Polskie znaki diakrytyczne w kodzie},label={lst:plchr}]
+{auxiliary/start.c}
+\end{verbatim}
+\lstinputlisting[language={[ANSI]C},inputencoding=utf8/cp1250,firstline=2,lastline=6,breaklines=true,numbers=left,frame=hnone,caption={Polskie znaki diakrytyczne w kodzie},label={lst:plchr}]{auxiliary/start.c}
+
+Można zauważyć, że oryginalny plik \texttt{start.c} z~katalogu \texttt{auxiliary} zawiera więcej linii, a~tutaj zamieszczono tylko wybrane (od 2 do 6). 
+Można też zmienić im numerację linii parametrem \verb|firstnumber|, np. \verb|firstnumber=5|.
 
 \subsubsection{Numerowanie i punktowanie}
 
@@ -338,33 +349,40 @@ Numeracja linii jest w stylu domyślnie włączona (to przydatne, bo w treści p
 	kolejnymi stronami tekstu.
 \end{enumerate}
 
+\subsubsection{Uwagi końcowe dla użytkowników \LaTeX}
+Kompilację dokumentu można przyspieszyć dodając opjconalny parametr \texttt{draft} do polecenia \texttt{\symbol{92}documentclass}. 
+Wówczas rysunki nie będą zamieszczane, a~w~ich miejscu pojawi się prostokąt z obrysem.
+Ponadto tryb ten zaznacza również fragmenty tekstu wychodzące na margines sygnalizowane przez komunikaty podczas kompilacji np. \texttt{Overfull \symbol{92}hbox (14.2264pt too wide) in paragraph at lines ...}.
+Takie naruszenia marginesów oznaczane są czarnym prostokątem na końcu wystającej linii. 
+Gdy linia ewidentnie nie mieści się w~obszarze strony, to również ten prostokąt nie zostanie zaznaczony. 
+Dlatego warto przejrzeć finalną postać tekstu, aby wykryć potencjalne niewielkie naruszenia marginesu.
 
 \subsection{Wykaz literatury}
 
 W wykazie literatury zamieszcza się wyłącznie pozycje, na które powołano się
-w pracy. Kolejność numerów w wykazie – zgodna z kolejnością pojawiania się danej
-pozycji w tekście.
+w pracy. Kolejność numerów w wykazie -- zgodna z kolejnością pojawiania się danej
+pozycji w~tekście.
 
 Format akapitu: akapit wyjustowany, wysunięcie 0,75 cm. Prawidłowo opracowany
 wykaz został zaprezentowany w niniejszym dokumencie w odpowiednim rozdziale, oznaczonym jako ,,Literatura''  (pozycja nr \cite{str} to zasoby internetowe,
-\cite{Jakubczyk1997} – książka, \cite{Barski2011} – artykuł w czasopiśmie, \cite{dokum} – karta katalogowa).
+\cite{Jakubczyk1997} -- książka, \cite{Barski2011} -- artykuł w czasopiśmie, \cite{dokum} -- karta katalogowa).
 
 \subsection{Wydruk pracy}
 
 Przed wydrukiem należy usunąć ewentualne błędy literowe i sprawdzić prawidłową
 interpunkcję.
 Przykładowo, łącznik zapisuje się za pomocą krótkiego minusa (np.
-badawczo-rozwojowy) natomiast myślnik -- stosowany w zdaniach wtrąconych -- zapisuje
+badaw\-czo-rozwojowy) natomiast myślnik -- stosowany w zdaniach wtrąconych -- zapisuje
 się za pomocą długiej pauzy.
 Dzielenie wyrazów według uznania autora (można podzielić
 długie wyrazy, powodujące duże ,,rozstrzelenie'' tekstu w poprzedzającym wierszu.
 Zaleca się usunięcie pojedynczych znaków na końcu wiersza przez zastosowanie w \LaTeX{} znaku tyldy w~tekście.
 Dla przedrostka ,,mikro'' należy unikać stosowania litery ,,u'' czy ,,$\mu$'' zamiast ,,\microS''. 
 Znak stopień otrzymuje poleceniem \kod{\symbol{36}\symbol{94}\symbol{92}circ\symbol{36}}.
-W celu uniknięcia ,,rozstrzelenia'' liczb i ich jednostek zaleca się używanie ,,twardej'' spacji pomiędzy liczbą i jednostką (znak tyldy w \LaTeX{} ,,\kod{\symbol{126}}''.
+W celu uniknięcia ,,rozstrzelenia'' liczb i~ich jednostek zaleca się używanie ,,twardej'' spacji pomiędzy liczbą i~jednostką (znak tyldy w \LaTeX{} ,,\kod{\symbol{126}}'').
 Należy sprawdzić, czy tytuły
 podrozdziałów/zakresów nie zostały jako pojedyncze wiersze na poprzedniej stronie oraz
-czy rysunki/tabele i ich tytuły nie zostały rozdzielone pomiędzy kolejnymi stronami.
+czy rysunki/tabele i~ich tytuły nie zostały rozdzielone pomiędzy kolejnymi stronami.
 
 Pracę drukuje się dwustronnie. Zaleca się wydruk w kolorze. Przed wydrukiem
 należy ponumerować strony (czcionka 10 pkt, dół strony, akapit wyśrodkowany).
