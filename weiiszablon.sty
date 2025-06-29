@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{weiiszablon}[2024/01/01 package <weiiszablon>]
+\ProvidesPackage{weiiszablon}[2025/06/29 package <weiiszablon>]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% %
 %%% % weiiszablon.sty
@@ -21,7 +21,7 @@
 \usepackage{etoolbox} 					% pakiet umożliwiający edycję domyślnych komend
 \usepackage{amsmath} 					% pakiet matematyczny
 \usepackage{color} 						% podstawowe kolory
-\usepackage{hyperref} 				    % aktywne linki
+
 \usepackage[final]{listingsutf8}                   % styl dla formatowania kodów źródłowych
 \usepackage{tikz}
 \usepackage{bm}							% dla pogrubionych i pochylonych czcionek w środowisku matematycznym
@@ -34,7 +34,15 @@
 \usepackage{chngcntr}				
 \usepackage[hyphens]{xurl}
 % \def\UrlBreaks{\do\/\do-}
-% \usepackage[unicode=true,naturalnames,psdextra]{hyperref}
+\usepackage[compact]{titlesec} 
+%zmiana czcionki i odstępów w tytułach rozdziałów
+\usepackage[all]{nowidow}
+%na potrzeby pionowego symbolu mikro 
+\usepackage{scalerel}
+\usepackage{fancybox}
+\usepackage{environ}
+
+\usepackage[unicode=true,naturalnames,psdextra]{hyperref}
 
 \renewcommand{\cftsecaftersnum}{.}
 \renewcommand{\cftsubsecaftersnum}{.}
@@ -116,8 +124,6 @@
 \definecolor{mygray}{gray}{0.6} 		% kolor szary
 
 
-\usepackage[compact]{titlesec} 
-%zmiana czcionki i odstępów w tytułach rozdziałów
 
 \titleformat{\section}
   {\normalfont\fontsize{16pt}{16pt}\bfseries}
@@ -168,8 +174,7 @@
 \captionsetup[figure]{labelformat=cfscr,labelfont=ftscr,labelseparator=labscr,textfont=ftscr,position=bottom,skip=3pt}
 \captionsetup[lstlisting]{labelformat=cfscr,labelfont=ftscr,labelseparator=labscr,textfont=ftscr,position=bottom,skip=3pt}
 
-%na potrzeby pionowego symbolu mikro 
-\usepackage{scalerel}
+
 \newsavebox{\fooboxMU}
 \newcommand{\slantbox}[2][0]{\colorlet{slantcolor}{.}\mbox{%
         \sbox{\fooboxMU}{\color{slantcolor}#2}%
@@ -230,7 +235,6 @@
 % NormalTeXSyntaxOff 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % % 10-cio linijkowy abstract
-\usepackage{fancybox,environ}
 
 \NewEnviron{fixedSizeBox}
   {\def\trysize{12pt}\def\tryblskip{12.5pt}%
@@ -315,7 +319,6 @@
 \newcommand\keywordsEN[1]{\renewcommand\@keywordsEN{#1}}
 \newcommand\@keywordsEN{\@latex@error{No \noexpand\keywordsEN given}\@ehc}
 
-\usepackage[all]{nowidow}
 
 \newcommand{\kod}[1]{\texttt{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -384,7 +387,7 @@ Autor: \@author, nr albumu: \@studentID
 	
 Opiekun: \@supervisor
 	
-Słowa kluczowe: (\@keywords)
+Słowa kluczowe: \@keywords
 \\
 \\
 \begin{fixedSizeBox}
@@ -418,7 +421,7 @@ Author: \@author, Student's ID: \@studentID
 	
 Supervisor: \@supervisorEN
 
-Key words: (\@keywordsEN)
+Key words: \@keywordsEN
 \\
 \\
 \begin{fixedSizeBox}
