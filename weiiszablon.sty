@@ -34,7 +34,7 @@
 \usepackage{chngcntr}				
 \usepackage[hyphens]{xurl}
 % \def\UrlBreaks{\do\/\do-}
-\usepackage[compact]{titlesec} 
+\usepackage[compact,pagestyles]{titlesec} 
 %zmiana czcionki i odstępów w tytułach rozdziałów
 \usepackage[all]{nowidow}
 %na potrzeby pionowego symbolu mikro 
@@ -90,7 +90,7 @@
   }
 
 % rozmiar czcionki numeru strony
-\renewcommand*{\thepage}{\footnotesize\arabic{page}}
+\renewpagestyle{plain}{\setfoot{}{\footnotesize\thepage}{}}
 
 %parametry dla kodów źródłowych
 \definecolor{mygreen}{rgb}{0,0.6,0}
